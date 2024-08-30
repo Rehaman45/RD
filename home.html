@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Rural Development Website">
+    <title>Rural Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #fcfcff;
+            color: rgb(0, 0, 0);
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(255, 2, 2, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
+
+        .logout-button {
+            background-color: #444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-right: 20px;
+            position: absolute;
+            right: 10px;
+        }
+
+        .logout-button:hover {
+            background-color: #555;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+            margin: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 15%;
+        }
+
+        .home-section img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            padding: 10%;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section input,
+        .contact-section textarea,
+        .contact-section button {
+            width: 80%;
+            max-width: 400px;
+            margin: 10px auto;
+            display: block;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section button {
+            background-color: #444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-section button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="padding-left: 5px;">Rural Development</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Feedback</a></li>
+            </ul>
+        </nav>
+        <button class="logout-button" onclick="location.href='login.html'">Logout</button>
+    </header>
+
+    <section style="background-image: url('https://c.wallhere.com/photos/7d/c9/1920x1080_px_field_landscape_path_sunset-704743.jpg!d');" id="home" class="home-section">
+        <h1 style="font-weight: 1000; font-size: 30px;"> <strong><b>Welcome to Rural Development Initiative </b></strong></h1>
+        <br>
+        <p> <strong>Empowering rural communities through sustainable development.</strong></p>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>We are a non-profit organization focused on rural development projects.</p>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2>Our Projects</h2>
+        <div class="project">
+            <h3><a href="https://meetaugust.ai/wa?id=topnav_7"><h1>Good Health and Well-Being</h1></a></h3>
+            <p><h1>Providing Good Health to rural communities is the main goal of our team.</h1></p>
+        </div>
+        <div class="project">
+            <h1><a href="https://www.eduaide.ai/app/generator">Educational Program</a></h1>
+            <p><h1>Improving education facilities in rural areas.</h1></p>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact-section">
+        <h2>Feedback Us</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your feedback" required></textarea>
+            <button type="submit">Send feedback</button>
+        </form>
+        <div id="response" style="color: green; display: none;">Thank you for your feedback!</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Rural Development Initiative. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                document.getElementById('response').style.display = 'block';
+                document.getElementById('contact-form').reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body, html {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .register-container {
+            display: flex;
+            width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .image-section {
+            background-image: url('rural1 - Copy.jpg'); 
+            background-size: cover;
+            background-position: center;
+            width: 60%;
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .register-section {
+            width: 40%;
+            background-color: #ffffff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-section h2 {
+            margin: 0 0 20px 0;
+            color: #333;
+        }
+
+        .register-section input[type="text"],
+        .register-section input[type="email"],
+        .register-section input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .register-section button {
+            padding: 10px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .register-section button:hover {
+            background-color: #333;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .login-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .login-link a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <div class="image-section">
+        <h1>JOIN US TODAY!</h1>
+    </div>
+    <div class="register-section">
+        <h2>SIGN UP</h2>
+        <input type="text" id="username" placeholder="USERNAME">
+        <input type="email" id="email" placeholder="EMAIL">
+        <input type="password" id="password" placeholder="PASSWORD">
+        <p id="error-message" class="error-message"></p>
+        <button onclick="handleRegister()">SIGN UP</button>
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleRegister() {
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var errorMessage = document.getElementById('error-message');
+
+        if (!username || !email || !password) {
+            errorMessage.textContent = 'Please fill out all fields.';
+        } else {
+            errorMessage.textContent = ''; 
+            console.log('Registered with', { username, email, password });
+            window.location.href = 'login.html'; // Redirect to the login page after successful registration
+        }
+    }
+</script>
+
+</body>
+</html>
